@@ -17,25 +17,27 @@ import axios from "axios";
 
 
 function App(): JSX.Element {
-  // console.log('test')
   // const [test, setTest] = useState<string>("abc");
   // async function testFunction() {
   //   const fetchData = await axios.get("http://localhost:8080/");
   //   setTest(fetchData.data);
+  //   console.log(fetchData);
   // }
   // useEffect(() => {
   //   testFunction();
   //   console.log(test);
   // }, []);
 
-  // const navigate = useNavigate();
+  
 
   const [userId, setUserId] = useState<number>(1);
   const [userEmail, setUserEmail] = useState<string>("testEmail");
+  const [userFirstName, setUserFirstName] = useState<string>("testFirstName");
+  const [userLastName, setUserLastName] = useState<string>("testLastName");
 
   return (
     <>
-      <MyContext.Provider value={{userId, userEmail, setUserId, setUserEmail}}>
+      <MyContext.Provider value={{userId, userEmail, userFirstName, userLastName, setUserId, setUserEmail, setUserFirstName, setUserLastName}}>
         <Router>
           <Routes>
             <Route path="/SignIn" element= {<SignIn />} />

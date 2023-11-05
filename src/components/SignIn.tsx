@@ -3,14 +3,13 @@ import { Link, useNavigate, NavigateFunction } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import SkipSignIn from './SkipSignIn';
-import { MyContext } from '../MyContext';
+
 
 export default function SignIn(): JSX.Element {
-  const [email, setEmail] = useState<string>('user1@gmail.com');
-  const [password, setPassword] = useState<string>('test123');
+  const [email, setEmail] = useState<string>('client1@gmail.com');
+  const [password, setPassword] = useState<string>('password123');
 
   const navigate: NavigateFunction = useNavigate();
-  const { userId, userEmail, setUserId, setUserEmail } = useContext(MyContext);
 
   async function signIn(e: any): Promise<void> {
     e.preventDefault();
@@ -28,18 +27,9 @@ export default function SignIn(): JSX.Element {
       // this will send email and password to firebase. If correct it will return user email
     // console.log(response);
     
-    if (response) {
-      navigate("/home");
-    } else alert('Invalid username or password');
+    if (response) navigate("/home");
+    else alert('Invalid username or password');
   }
-
-  // function test() {
-  //   console.log(userId, userEmail);
-  // }
-  // function test2() {
-  //   setUserId(2);
-  //   setUserEmail("UpdateEmail");
-  // }
 
   return (
     <>
@@ -63,8 +53,6 @@ export default function SignIn(): JSX.Element {
         </form>
         <Link to="/SignUp"><button>Sign Up</button></Link>
       </div>
-      {/* <button onClick={test}>test</button>
-      <button onClick={test2}>test2</button> */}
     </>
   )
 }
