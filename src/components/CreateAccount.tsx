@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import CheckAuth from './CheckAuth';
 import { MyContext } from '../MyContext';
 import axios from 'axios';
@@ -8,21 +9,24 @@ interface NewAccountData {
   accountName: string,
   currency: string,
   accountType: string,
-  note: string,
+  note?: string | undefined,
 }
 
 export default function CreateAccount(): JSX.Element {
   const [accountName, setAccountName] = useState<string>('');
   const [currency, setCurrency] = useState<string>('');
   const [accountType, setAccountType] = useState<string>(''); 
-  const [note, setNote] = useState<string>('');
+  const [note, setNote] = useState<string | undefined>('');
 
+  const navigate = useNavigate();
   const { userId } = useContext(MyContext);
 
   const accountTypeOption: string[] = ['General', 'Cash', 'Bank Account', 'Credit Card', 'Electronic Money'];
   const currencyOption: string[] = ['USD', 'JYP', 'IDR', 'SGD', 'EUR', 'GBP', 'AUD', 'NZD', 'HKD', 'CHF', 'CAD', 'CNH'];
 
-  async function createAccount(): Promise<void> {
+  async function createAccount(e: any): Promise<void> {
+    e.preventDefault();
+
     const newAccountData: NewAccountData = {
       userId: userId,
       accountName: accountName,
@@ -33,15 +37,18 @@ export default function CreateAccount(): JSX.Element {
     const url: string = 'http://localhost:8080/account';
     // const url: string = 'https://personal-finance-app-server.onrender.com/account';
     await axios.post(url, newAccountData)
-      .then(res => alert(res.data))
+      .then(res => {
+        alert(res.data);
+        navigate("/Home");
+      })
       .catch(error => console.log(error));
   }
 
 
   // TEST FUNCTION
-  // useEffect(() => {
-  //   console.log(accountType);
-  // }, [accountType]);
+  useEffect(() => {
+    console.log(accountType);
+  }, [accountType]);
 
   return (
     <div>
@@ -55,12 +62,12 @@ export default function CreateAccount(): JSX.Element {
           onChange={(e) => setAccountName(e.target.value)}
           required
         ></input>
-        <select onChange={(e) => setCurrency(e.target.value)}>
-          <option>Select Currency</option>
+        <select onChange={(e) => setCurrency(e.target.value)} required>
+          <option disabled> -- select an option -- </option>
           {currencyOption.map((currency) => <option key={currency} value={currency}>{currency}</option>)}
         </select>
-        <select onChange={(e) => setAccountType(e.target.value)}>
-          <option>Select Account</option>
+        <select onChange={(e) => setAccountType(e.target.value)} required>
+          <option disabled> -- select an option -- </option>
           {accountTypeOption.map((type) => <option key={type} value={type}>{type}</option>)}
         </select>
         <input
@@ -68,10 +75,10 @@ export default function CreateAccount(): JSX.Element {
           placeholder='Enter your note'
           value={note}
           onChange={(e) => setNote(e.target.value)}
-          required
         ></input>
         <button type='submit'>Create Account</button>
       </form>
+      <Link to="/Home"><button>Go back to home</button></Link>
     </div>
   )
 }
