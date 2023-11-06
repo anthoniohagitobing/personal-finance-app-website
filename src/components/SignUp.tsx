@@ -5,22 +5,22 @@ import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import axios, {AxiosResponse} from 'axios';
 
 export default function SignUp(): JSX.Element {
-  const [email, setEmail] = useState<string>('client1@gmail.com');
-  const [password, setPassword] = useState<string>('password123');
-  const [firstName, setFirstName] = useState<string>('firstname123');
-  const [lastName, setLastName] = useState<string>('lastname123');
+  const [email, setEmail] = useState<string>('email1@gmail.com');
+  const [password, setPassword] = useState<string>('password1');
+  const [firstName, setFirstName] = useState<string>('firstname1');
+  const [lastName, setLastName] = useState<string>('lastname1');
   const navigate = useNavigate();
 
   async function signUp(e: any) {
     e.preventDefault();
       // this prevents the email and password to dissapear when button is clicked, achieved by removing default
 
-    // Creating account
+    // Creating user
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredintial) => {
         // Indicate success
         console.log(userCredintial);
-        alert("Create account successful in firebase");
+        alert("Create user successful in firebase");
 
         // Logging out and sent to sign in page
         signOut(auth)
@@ -40,7 +40,10 @@ export default function SignUp(): JSX.Element {
         const url: string = 'http://localhost:8080/user';
         // const url: string = 'https://personal-finance-app-server.onrender.com/user';
         await axios.post(url, newUserData)
-          .then(res => alert(res))
+          .then(res => {
+            // console.log(res);
+            alert(res.data);
+          })
           .catch(error => console.log(error)); 
       })
       .catch((error) => {
@@ -59,24 +62,28 @@ export default function SignUp(): JSX.Element {
             placeholder='Enter your email'
             value={email}
             onChange={(e) => setEmail(e.target.value) }
+            required
           ></input>
           <input 
             type="pasword" 
             placeholder='Enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value) }
+            required
           ></input>
           <input 
             type="text" 
             placeholder='Enter your first name'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value) }
+            required
           ></input>
           <input 
             type="text" 
             placeholder='Enter your last name'
             value={lastName}
             onChange={(e) => setLastName(e.target.value) }
+            required
           ></input>
           <button type="submit">Sign up</button>
         </form>

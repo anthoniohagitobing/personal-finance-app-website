@@ -7,13 +7,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Home from "./components/Home";
+import CreateAccount from "./components/CreateAccount";
 import { MyContext } from "./MyContext";
 
 // IMPORT OTHERS
 import './App.css';
-import axios from "axios";
-
-
 
 
 function App(): JSX.Element {
@@ -44,6 +42,7 @@ function App(): JSX.Element {
             <Route path="/SignUp" element= {<SignUp />} />
             <Route path="/Home" element= {<Home />} />
             <Route path="*" element={<Navigate to="/SignIn" />} />
+            <Route path="/CreateAccount" element= {<CreateAccount />} />
           </Routes>
         </Router>
       </MyContext.Provider>

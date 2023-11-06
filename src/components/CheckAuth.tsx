@@ -9,13 +9,9 @@ export default function CheckAuth() {
   const navigate = useNavigate();
   const { userId, userEmail, userFirstName, userLastName, setUserId, setUserEmail, setUserFirstName, setUserLastName } = useContext(MyContext);
 
-  function test() {
+  function checkCurrentUser() {
     console.log(userId, userEmail, userFirstName, userLastName);
   }
-  // function test2() {
-  //   setUserId(2);
-  //   setUserEmail("UpdateEmail");
-  // }
 
   useEffect(() => {
     // Check if user is log-ed in. If not, return to sign in. If yes, assign context variable
@@ -26,7 +22,7 @@ export default function CheckAuth() {
         const url: string = `http://localhost:8080/user/${user.email}`;
         // const url: string = `https://personal-finance-app-server.onrender.com/user/${user.email}`;
         const userData: AxiosResponse<any, any> = await axios.get(url);
-        console.log(userData);
+        // console.log(userData);
 
         // Assign to global variables
         setUserId(userData.data.id);
@@ -48,8 +44,7 @@ export default function CheckAuth() {
 
   return (
     <>
-      <button onClick={test}>test</button>
-      {/* <button onClick={test2}>test2</button>  */}
+      <button onClick={checkCurrentUser}>Check Current User</button>
     </>
   )
 }
