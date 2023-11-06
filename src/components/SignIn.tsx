@@ -6,8 +6,8 @@ import SkipSignIn from './SkipSignIn';
 
 
 export default function SignIn(): JSX.Element {
-  const [email, setEmail] = useState<string>('client1@gmail.com');
-  const [password, setPassword] = useState<string>('password123');
+  const [email, setEmail] = useState<string>('email1@gmail.com');
+  const [password, setPassword] = useState<string>('password1');
 
   const navigate: NavigateFunction = useNavigate();
 
@@ -42,12 +42,14 @@ export default function SignIn(): JSX.Element {
             placeholder='Enter your email'
             value={email}
             onChange={(e) => setEmail(e.target.value) }
+            required
           ></input>
           <input 
             type="pasword" 
             placeholder='Enter your password'
             value={password}
             onChange={(e) => setPassword(e.target.value) }
+            required
           ></input>
           <button type="submit">Sign In</button>
         </form>
