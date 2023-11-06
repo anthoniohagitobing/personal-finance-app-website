@@ -12,7 +12,7 @@ interface MyContext {
 }
 
 const defaultState = {
-  userId: 1,
+  userId: 0,
   userEmail: "testEmail",
   userFirstName: "testFirstName",
   userLastName: "testLastName",

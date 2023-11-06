@@ -22,7 +22,7 @@ export default function Home() {
     const url: string = `http://localhost:8080/account/${userId}`;
     // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
     const retrievedData = await axios.get(url);
-    console.log(retrievedData);
+    // console.log(retrievedData);
     setAllAccount(retrievedData.data);
   }
 
@@ -32,8 +32,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getAllAccount();
-  }, []);
+    if (userId) getAllAccount();
+  }, [userId]);
 
   return (
     <>

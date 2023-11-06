@@ -29,7 +29,7 @@ function App(): JSX.Element {
 
   
 
-  const [userId, setUserId] = useState<number>(1);
+  const [userId, setUserId] = useState<number>(0);
   const [userEmail, setUserEmail] = useState<string>("testEmail");
   const [userFirstName, setUserFirstName] = useState<string>("testFirstName");
   const [userLastName, setUserLastName] = useState<string>("testLastName");
