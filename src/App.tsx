@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Home from "./components/Home";
 import CreateAccount from "./components/CreateAccount";
+import CreateRecordIncomeExpense from "./components/CreateRecordIncomeExpense";
 import { MyContext } from "./MyContext";
 
 // IMPORT OTHERS
@@ -43,6 +44,7 @@ function App(): JSX.Element {
             <Route path="/Home" element= {<Home />} />
             <Route path="*" element={<Navigate to="/SignIn" />} />
             <Route path="/CreateAccount" element= {<CreateAccount />} />
+            <Route path="/CreateRecordIncomeExpense" element= {<CreateRecordIncomeExpense />} />
           </Routes>
         </Router>
       </MyContext.Provider>

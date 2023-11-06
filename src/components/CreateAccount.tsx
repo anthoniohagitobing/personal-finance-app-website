@@ -4,15 +4,15 @@ import CheckAuth from './CheckAuth';
 import { MyContext } from '../MyContext';
 import axios from 'axios';
 
-interface NewAccountData {
-  userId: number,
-  accountName: string,
-  currency: string,
-  accountType: string,
-  note?: string | undefined,
-}
-
 export default function CreateAccount(): JSX.Element {
+  interface NewAccountData {
+    userId: number,
+    accountName: string,
+    currency: string,
+    accountType: string,
+    note?: string | undefined,
+  }
+  
   const [accountName, setAccountName] = useState<string>('');
   const [currency, setCurrency] = useState<string>('');
   const [accountType, setAccountType] = useState<string>(''); 
@@ -46,13 +46,14 @@ export default function CreateAccount(): JSX.Element {
 
 
   // TEST FUNCTION
-  useEffect(() => {
-    console.log(accountType);
-  }, [accountType]);
+  // useEffect(() => {
+  //   console.log(accountType);
+  // }, [accountType]);
 
   return (
     <div>
       <CheckAuth />
+      <Link to="/Home"><button>Go back to home</button></Link>
       <form onSubmit={createAccount}>
         <h1>Create Account</h1>
         <input
@@ -78,7 +79,6 @@ export default function CreateAccount(): JSX.Element {
         ></input>
         <button type='submit'>Create Account</button>
       </form>
-      <Link to="/Home"><button>Go back to home</button></Link>
     </div>
   )
 }

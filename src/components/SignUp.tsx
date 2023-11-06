@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 export default function SignUp(): JSX.Element {
   const [email, setEmail] = useState<string>('email1@gmail.com');

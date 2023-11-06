@@ -3,7 +3,7 @@ import SignOut from './SignOut';
 import CheckAuth from './CheckAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import { MyContext } from '../MyContext';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 export default function Home() {
   interface Account {
@@ -13,7 +13,7 @@ export default function Home() {
     accountType: string,
   }
 
-  const[allAccount, setAllAccount] = useState<Account[]>([]);
+  const [allAccount, setAllAccount] = useState<Account[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
 
   const { userId } = useContext(MyContext);
@@ -21,7 +21,7 @@ export default function Home() {
   async function getAllAccount(): Promise<void> {
     const url: string = `http://localhost:8080/account/${userId}`;
     // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
-    const retrievedData: AxiosResponse<any, any> = await axios.get(url);
+    const retrievedData = await axios.get(url);
     console.log(retrievedData);
     setAllAccount(retrievedData.data);
   }
@@ -41,6 +41,7 @@ export default function Home() {
       <SignOut />
       <h1>home page</h1>
       <Link to="/CreateAccount"><button>Create Account</button></Link>
+      <Link to="/CreateRecordIncomeExpense"><button>Create Record: Income/Expense</button></Link>
       <div>
         <h2>Account List</h2>
         {allAccount.map((account, index) => {

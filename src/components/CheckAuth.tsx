@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../MyContext';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 export default function CheckAuth() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function CheckAuth() {
         // Retrieve user data from backend database
         const url: string = `http://localhost:8080/user/${user.email}`;
         // const url: string = `https://personal-finance-app-server.onrender.com/user/${user.email}`;
-        const userData: AxiosResponse<any, any> = await axios.get(url);
+        const userData = await axios.get(url);
         // console.log(userData);
 
         // Assign to global variables
