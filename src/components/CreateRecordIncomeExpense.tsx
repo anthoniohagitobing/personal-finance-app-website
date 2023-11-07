@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -18,17 +18,17 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
     accountId: number | null,
     transactionType: string,
     title: string,
-    dateTime: string,
+    dateTime: string | null,
     category: string,
     inputType: string,
     amount: number
   }
 
-  const [allAccount, setAllAccount] = useState<Account[]>([]);
+  const [allAccounts, setAllAccounts] = useState<Account[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<number | null>(null);
   const [transactionType, setTransactionType] = useState<string>('Income');
   const [title, setTitle] = useState<string>('');
-  const [dateTime, setDateTime] = useState<Date>(new Date()); 
+  const [dateTime, setDateTime] = useState<Date | null>(new Date()); 
   const [category, setCategory] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
 
@@ -46,12 +46,12 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
   // }, [dateTime]);
 
   // GET ALL ACCOUNT AND SELECT ACCOUNT
-  async function getAllAccount(): Promise<void> {
+  async function getAllAccounts(): Promise<void> {
     const url: string = `http://localhost:8080/account/${userId}`;
     // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
     const retrievedData = await axios.get(url);
     // console.log(retrievedData);
-    setAllAccount(retrievedData.data);
+    setAllAccounts(retrievedData.data);
     setSelectedAccount(retrievedData.data[0].id);
   }
 
@@ -61,7 +61,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
   }
 
   useEffect(() => {
-    if (userId) getAllAccount();
+    if (userId) getAllAccounts();
   }, [userId]);
 
 
@@ -69,7 +69,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
   async function createRecordIncomeExpense(e: any) {
     e.preventDefault();
 
-    const convertedDateTime: string = dateTime.toISOString();
+    const convertedDateTime: string | null = (dateTime) && dateTime.toISOString();
     const convertedAmount: number = amount * (transactionType === 'Income' ? 1 : -1);
     const newRecordIncomeExpense: NewRecordIncomeExpense = {
       accountId: selectedAccount,
@@ -87,7 +87,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
     await axios.post(url, newRecordIncomeExpense)
     .then(res => {
       alert(res.data);
-      // navigate("/Home");
+      navigate("/Home");
     })
     .catch(error => console.log(error));
   }
@@ -114,7 +114,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
         </select>
         <select onChange={selectAccount} required>
           <option disabled> -- select an option -- </option>
-          {allAccount.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
+          {allAccounts.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
         </select>
         <select onChange={(e) => setCategory(e.target.value)} required>
           <option disabled> -- select an option -- </option>
