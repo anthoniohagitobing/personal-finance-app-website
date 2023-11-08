@@ -32,29 +32,40 @@ export default function SignIn(): JSX.Element {
   }
 
   return (
-    <>
+    <div className="sign-in">
       <SkipSignIn />
-      <div>
-        <form onSubmit={signIn}>
-          <h1>Log In to Your Account</h1>
-          <input 
-            type="email" 
-            placeholder='Enter your email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value) }
-            required
-          ></input>
-          <input 
-            type="pasword" 
-            placeholder='Enter your password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value) }
-            required
-          ></input>
-          <button type="submit">Sign In</button>
+      <div className='sign-in__container'>
+        <h1 className='sign-in__title'>Sign In to Your Account</ h1>
+        <form onSubmit={signIn} className='sign-in__form'>
+          <div className='sign-in__form__box'>
+            <label className='sign-in__form__box__label'>Email</label>
+            <input 
+              type="email" 
+              placeholder='Type your email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value) }
+              className='sign-in__form__box__input'
+              required
+            ></input>
+          </div>
+          <div className='sign-in__form__box'>
+            <label className='sign-in__form__box__label'>Password</label>
+            <input 
+              type="pasword" 
+              placeholder='Type your password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value) }
+              className='sign-in__form__box__input'
+              required
+            ></input>
+          </div>
+          <button type="submit" className='sign-in__form__sign-in-button'>Sign In</button>
         </form>
-        <Link to="/SignUp"><button>Sign Up</button></Link>
+        <div className='sign-in__sign-up'>
+          <p className='sign-in__sign-up__text'>Don't have an account?</p>
+          <Link to="/SignUp"><p className='sign-in__sign-up__link'>Sign Up</p></Link>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
