@@ -57,7 +57,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
 
   function selectAccount(e: any): void {
     console.log(e.target.value);
-    setSelectedAccount(e.target.value);
+    setSelectedAccount(Number(e.target.value));
   }
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
       inputType: 'Global',
       amount: convertedAmount,
     }
-    // console.log(newRecordIncomeExpense);
+    console.log(newRecordIncomeExpense);
 
     const url: string = 'http://localhost:8080/record-income-expense';
     // const url: string = 'https://personal-finance-app-server.onrender.com/record-income-expense';
