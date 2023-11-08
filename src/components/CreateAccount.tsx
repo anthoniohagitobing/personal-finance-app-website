@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CheckAuth from './CheckAuth';
 import { MyContext } from '../MyContext';
@@ -14,8 +14,8 @@ export default function CreateAccount(): JSX.Element {
   }
   
   const [accountName, setAccountName] = useState<string>('');
-  const [currency, setCurrency] = useState<string>('');
-  const [accountType, setAccountType] = useState<string>(''); 
+  const [currency, setCurrency] = useState<string>('General');
+  const [accountType, setAccountType] = useState<string>('USD'); 
   const [note, setNote] = useState<string | undefined>('');
 
   const navigate = useNavigate();
