@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function CheckAuth() {
   const navigate = useNavigate();
-  const { userId, userEmail, userFirstName, userLastName, setUserId, setUserEmail, setUserFirstName, setUserLastName } = useContext(MyContext);
+  const { setUserId, setUserEmail, setUserFirstName, setUserLastName } = useContext(MyContext);
 
   // function checkCurrentUser() {
   //   console.log(userId, userEmail, userFirstName, userLastName);
