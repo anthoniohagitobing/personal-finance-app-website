@@ -5,6 +5,7 @@ import axios from 'axios';
 import format from 'date-fns/format';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import SignOut from './SignOut';
 
 export default function ShowRecord(): JSX.Element {
   interface Record {
@@ -18,6 +19,7 @@ export default function ShowRecord(): JSX.Element {
   }
 
   const [allRecords, setAllRecords] = useState<Record[]>([]);
+  const [accountInformation, setAccountInformation] = useState();
   const [processedRecords, setProcessedRecords] = useState<Record[]>([]);
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [totalExpense, setTotalExpense] = useState<number>(0);
@@ -41,14 +43,17 @@ export default function ShowRecord(): JSX.Element {
   const [filterNewestDate, setFilterNewestDate] = useState<Date | null>(defaultNewestDate);
   const [orderDate, setOrderDate] = useState<string>('desc');
 
-  // GETTING ALL RECORDS
-  async function getAllRecords(): Promise<void> {
+  // GETTING ACCOUNT INFORMATION
+  async function getAccountInformation(): Promise<void> {
     const accountId = location.state.selectedAccount;
     // console.log(accountId);
 
     // Guard clause, this will prevent fetching if account id is not selected
     if (!accountId) return;
 
+    // RETRIEVE ACCOUNT DETAILS
+
+    // RETRIEVE ALL RECORDS
     const url: string = `http://localhost:8080/all-records/${accountId}`;
     // const url: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
     const retrievedData = await axios.get(url);
@@ -57,7 +62,7 @@ export default function ShowRecord(): JSX.Element {
   }
   
   useEffect(() => {
-    getAllRecords();
+    getAccountInformation();
   }, []);
 
   // PROCESSING RECORDS BASED ON FILTERS AND SORT
@@ -132,63 +137,121 @@ export default function ShowRecord(): JSX.Element {
 
 
   return (
-    <>
+    <div className='show-records'>
       <CheckAuth />
-      <Link to="/Home"><button>Go back to home</button></Link>
-      <button onClick={calculateTotal}>Test</button>
-      <select onChange={(e) => setFilterCategory(e.target.value)}>
-        <option disabled> -- select an option -- </option>
-        <option>All</option>
-        <optgroup label="Income">
-          {categoryIncome.map((category) => <option key={category} value={category}>{category}</option>)}
-        </optgroup>
-        <optgroup label="Expense">
-          {categoryExpense.map((category) => <option key={category} value={category}>{category}</option>)}
-        </optgroup>
-      </select>
-      <select onChange={(e) => setFilterTransactionType(e.target.value)}>
-        <option disabled> -- select an option -- </option>
-        <option>All</option>
-        <option>Income</option>
-        <option>Expense</option>
-      </select>
-      <input
-        type='number'
-        placeholder='Enter lowest amount'
-        value={filterLowestAmount}
-        onChange={(e) => setFilterLowestAmount(e.target.value)}
-      ></input>
-      <input
-        type='number'
-        placeholder='Enter highest amount'
-        value={filterHighestAmount}
-        onChange={(e) => setFilterHighestAmount(e.target.value)}
-      ></input>
-      <DatePicker 
-        selected={filterOldestDate}
-        onChange={dateTime => setFilterOldestDate(dateTime)}
-      />
-      <DatePicker 
-        selected={filterNewestDate}
-        onChange={dateTime => setFilterNewestDate(dateTime)}
-      />
-      <button onClick={changeOrderDate}>{orderDate}</button>
-      {processedRecords?.map((account, index) => {
-        const dateTimeShown = format(new Date(account.dateTime), "EEE',' dd MMM yy");
-        return (
-          <div key={index}>
-            <p>{account.title}</p>
-            <p>{account.category}</p>
-            <p>{dateTimeShown}</p>
-            <p>{account.amount}</p>
-            <p>{account.transactionType}</p>
-            <p>--------------</p>
+      <div className='show-records__nav-bar'>
+        <Link to='/Home' className='show-records__nav-bar__title'>Home</Link>
+        <div className='show-records__nav-bar__button'>
+          <Link to="/Home"><button className='create-account__nav-bar__button__home'>Go back to home</button></Link>
+          <SignOut />
+        </div>
+      </div>
+      <div className='show-records__card'>
+        <h1 className='show-records__card__title'>Account History</h1>
+        <div className='show-records__card__summary'>
+          <div className='show-records__card__summary__block'>
+            <label className='show-records__card__summary__block__label'>Total Income:</label>
+            <p className='show-records__card__summary__block__data positive'>{totalIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
           </div>
-        )
-      })}
-      <p>{totalIncome}</p>
-      <p>{totalExpense}</p>
-      <p>{netChange}</p>
-    </>
+          <div className='show-records__card__summary__block'>
+            <label className='show-records__card__summary__block__label'>Total Expense:</label>
+            <p className='show-records__card__summary__block__data negative'>{totalExpense.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+          </div>
+          <div className='show-records__card__summary__block'>
+          <label className='show-records__card__summary__block__label'>Net Change:</label>
+            <p className={netChange >= 0 ? 'show-records__card__summary__block__data positive' : 'show-records__card__summary__block__data negative'}>{netChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+          </div>
+        </div>
+        <div className='show-records__card__filter'>
+          <h3 className='show-records__card__filter__title'>Filter:</h3>
+          <div className='show-records__card__filter__column'>
+            <div className='show-records__card__filter__column__block'>
+              <label className='show-records__card__filter__column__block__label'>Category:</label>
+              <label className='show-records__card__filter__column__block__label'>Transaction Type:</label>
+            </div>
+            <div className='show-records__card__filter__column__block'>
+              <select onChange={(e) => setFilterTransactionType(e.target.value)} className='show-records__card__filter__column__block__select'>
+                <option disabled> -- select an option -- </option>
+                <option>All</option>
+                <option>Income</option>
+                <option>Expense</option>
+              </select>
+              <select onChange={(e) => setFilterCategory(e.target.value)} className='show-records__card__filter__column__block__select'>
+                <option disabled> -- select an option -- </option>
+                <option>All</option>
+                <optgroup label="Income">
+                  {categoryIncome.map((category) => <option key={category} value={category}>{category}</option>)}
+                </optgroup>
+                <optgroup label="Expense">
+                  {categoryExpense.map((category) => <option key={category} value={category}>{category}</option>)}
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div className='show-records__card__filter__column'>
+            <div className='show-records__card__filter__column__block'>
+              <label className='show-records__card__filter__column__block__label'>Date:</label>
+              <label className='show-records__card__filter__column__block__label'>Amount:</label>
+            </div>
+            <div className='show-records__card__filter__column__block'>
+              <DatePicker 
+                selected={filterOldestDate}
+                onChange={dateTime => setFilterOldestDate(dateTime)}
+                className='show-records__card__filter__column__block__date'
+              />
+              <input
+                type='number'
+                placeholder='Enter lowest amount'
+                value={filterLowestAmount}
+                onChange={(e) => setFilterLowestAmount(e.target.value)}
+                className='show-records__card__filter__column__block__input'
+              ></input>
+            </div>
+            <div className='show-records__card__filter__column__block'>
+              <p>-</p>  
+              <p>-</p>  
+            </div>
+            <div className='show-records__card__filter__column__block'>
+              <DatePicker 
+                selected={filterNewestDate}
+                onChange={dateTime => setFilterNewestDate(dateTime)}
+                className='show-records__card__filter__column__block__date'
+              />
+              <input
+                  type='number'
+                  placeholder='Enter highest amount'
+                  value={filterHighestAmount}
+                  onChange={(e) => setFilterHighestAmount(e.target.value)}
+                  className='show-records__card__filter__column__block__input'
+                ></input>
+            </div>
+            <div className='show-records__card__filter__column__block'>
+              <button onClick={changeOrderDate} className='show-records__card__filter__column__block__button'>{orderDate}</button>
+            </div>
+          </div>
+        </div>
+        <div className='show-records__card__history'>
+          <div className='show-records__card__history__heading'>
+            <div>Title</div>
+            <div>Category</div>
+            <div>Date</div>
+            <div>Amount</div>
+            {/* <div>Type</div> */}
+          </div>
+          {processedRecords?.map((account, index) => {
+            const dateTimeShown = format(new Date(account.dateTime), "EEE',' dd MMM yy");
+            return (
+              <div key={index} className='show-records__card__history__row'>
+                <div>{account.title}</div>
+                <div>{account.category}</div>
+                <div>{dateTimeShown}</div>
+                <div>{account.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                {/* <div>{account.transactionType}</div> */}
+              </div>
+            )
+          })}
+        </div>
+        </div>
+      </div>
   );
 };

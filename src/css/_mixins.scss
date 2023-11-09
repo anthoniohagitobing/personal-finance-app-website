@@ -6,7 +6,7 @@
 }
 
 @mixin button($button-color) {
-  border: none;
+  border: solid black 1px;
   padding: 12px;
   border-radius: 12px;
   background-color: map-get($map: $button-color, $key: initial);
