@@ -16,7 +16,7 @@ export default function CheckAuth() {
   useEffect(() => {
     // Check if user is log-ed in. If not, return to sign in. If yes, assign context variable
     const listen = onAuthStateChanged(auth, async (user: any) => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         // Retrieve user data from backend database
         const url: string = `http://localhost:8080/user/${user.email}`;

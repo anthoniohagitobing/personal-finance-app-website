@@ -5,10 +5,10 @@ import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import axios from 'axios';
 
 export default function SignUp(): JSX.Element {
-  const [email, setEmail] = useState<string>('email1@gmail.com');
-  const [password, setPassword] = useState<string>('password1');
-  const [firstName, setFirstName] = useState<string>('firstname1');
-  const [lastName, setLastName] = useState<string>('lastname1');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
   const navigate = useNavigate();
 
   async function signUp(e: any) {
@@ -71,7 +71,7 @@ export default function SignUp(): JSX.Element {
             <div className='sign-up__card__form__box'>
               <label className='sign-up__card__form__box__label'>Password</label>
               <input 
-                type="pasword" 
+                type="password" 
                 placeholder='Enter your password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value) }

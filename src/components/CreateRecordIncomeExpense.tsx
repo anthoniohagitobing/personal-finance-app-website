@@ -48,16 +48,16 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
 
   // GET ALL ACCOUNT AND SELECT ACCOUNT
   async function getAllAccounts(): Promise<void> {
-    const url: string = `http://localhost:8080/account/${userId}`;
-    // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
+    const url: string = `http://localhost:8080/accounts/${userId}`;
+    // const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
     const retrievedData = await axios.get(url);
     // console.log(retrievedData);
-    setAllAccounts(retrievedData.data);
-    setSelectedAccount(retrievedData.data[0].id);
+    setAllAccounts(retrievedData?.data);
+    setSelectedAccount(retrievedData?.data[0].id);
   }
 
   function selectAccount(e: any): void {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setSelectedAccount(Number(e.target.value));
   }
 
@@ -81,7 +81,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
       inputType: 'Global',
       amount: convertedAmount,
     }
-    console.log(newRecordIncomeExpense);
+    // console.log(newRecordIncomeExpense);
 
     const url: string = 'http://localhost:8080/record-income-expense';
     // const url: string = 'https://personal-finance-app-server.onrender.com/record-income-expense';
@@ -106,7 +106,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
     <div className='create-record-income-expense'>
       <CheckAuth />
       <div className='create-record-income-expense__nav-bar'>
-        <Link to="/Home" className='create-record-income-expense__nav-bar__title'>Home</Link >
+        <Link to="/Home" className='create-record-income-expense__nav-bar__title'>Bookkeeper</Link >
         <div className='create-record-income-expense__nav-bar__button'>
           <Link to="/Home"><button className='create-record-income-expense__nav-bar__button__home'>Go back to home</button></Link>
           <SignOut />
@@ -127,7 +127,7 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
             <label className='create-record-income-expense__card__form__box__label'>Account Name:</label>
             <select onChange={selectAccount} className='create-record-income-expense__card__form__box__select' required>
               <option disabled> -- select an option -- </option>
-              {allAccounts.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
+              {allAccounts?.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
             </select>
           </div>
           <div className='create-record-income-expense__card__form__box'>

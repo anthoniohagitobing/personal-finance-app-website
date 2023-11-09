@@ -18,8 +18,15 @@ export default function ShowRecord(): JSX.Element {
     amount: number;
   }
 
+  interface Account {
+    id: number,
+    accountName: string,
+    currency: string,
+    accountType: string,
+  }
+
   const [allRecords, setAllRecords] = useState<Record[]>([]);
-  const [accountInformation, setAccountInformation] = useState();
+  const [accountInformation, setAccountInformation] = useState<Account | null>(null);
   const [processedRecords, setProcessedRecords] = useState<Record[]>([]);
   const [totalIncome, setTotalIncome] = useState<number>(0);
   const [totalExpense, setTotalExpense] = useState<number>(0);
@@ -52,13 +59,18 @@ export default function ShowRecord(): JSX.Element {
     if (!accountId) return;
 
     // RETRIEVE ACCOUNT DETAILS
+    const url1: string = `http://localhost:8080/account/${accountId}`;
+    // const url1: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
+    const retrievedData1 = await axios.get(url1);
+    setAccountInformation(retrievedData1.data);
+    // console.log(retrievedData1.data);
 
     // RETRIEVE ALL RECORDS
-    const url: string = `http://localhost:8080/all-records/${accountId}`;
-    // const url: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
-    const retrievedData = await axios.get(url);
-    // console.log(retrievedData.data);
-    setAllRecords(retrievedData.data);
+    const url2: string = `http://localhost:8080/all-records/${accountId}`;
+    // const url2: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
+    const retrievedData2 = await axios.get(url2);
+    // console.log(retrievedData2.data);
+    setAllRecords(retrievedData2.data);
   }
   
   useEffect(() => {
@@ -140,14 +152,26 @@ export default function ShowRecord(): JSX.Element {
     <div className='show-records'>
       <CheckAuth />
       <div className='show-records__nav-bar'>
-        <Link to='/Home' className='show-records__nav-bar__title'>Home</Link>
+        <Link to='/Home' className='show-records__nav-bar__title'>Bookkeeper</Link>
         <div className='show-records__nav-bar__button'>
           <Link to="/Home"><button className='create-account__nav-bar__button__home'>Go back to home</button></Link>
           <SignOut />
         </div>
       </div>
       <div className='show-records__card'>
-        <h1 className='show-records__card__title'>Account History</h1>
+        <div className='show-records__card__header'>
+          <div className='show-records__card__header__account-information'>
+            <div className='show-records__card__header__account-information__block'>
+              <p className='show-records__card__header__account-information__block__label'>Account Name:</p>
+              <p className='show-records__card__header__account-information__block__label'>Account Type:</p>
+            </div>
+            <div className='show-records__card__header__account-information__block'>
+              <p className='show-records__card__header__account-information__block__value'>{accountInformation?.accountName}</p>
+              <p className='show-records__card__header__account-information__block__value'>{accountInformation?.accountType}</p>
+            </div>
+          </div>
+          <h1 className='show-records__card__header__title'>Account History</h1>
+        </div>
         <div className='show-records__card__summary'>
           <div className='show-records__card__summary__block'>
             <label className='show-records__card__summary__block__label'>Total Income:</label>
@@ -235,7 +259,7 @@ export default function ShowRecord(): JSX.Element {
             <div>Title</div>
             <div>Category</div>
             <div>Date</div>
-            <div>Amount</div>
+            <div>Amount ({accountInformation?.currency})</div>
             {/* <div>Type</div> */}
           </div>
           {processedRecords?.map((account, index) => {

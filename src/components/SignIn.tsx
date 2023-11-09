@@ -3,11 +3,11 @@ import { Link, useNavigate, NavigateFunction } from 'react-router-dom';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import SkipSignIn from './SkipSignIn';
-
+import logo from '../assets/logo.jpeg';
 
 export default function SignIn(): JSX.Element {
-  const [email, setEmail] = useState<string>('email1@gmail.com');
-  const [password, setPassword] = useState<string>('password1');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const navigate: NavigateFunction = useNavigate();
 
@@ -38,6 +38,10 @@ export default function SignIn(): JSX.Element {
     <div className="sign-in">
       <SkipSignIn />
       <div className='sign-in__card'>
+        <div className='sign-in__card__logo'>
+          <img src={logo} className='sign-in__card__logo__picture'/>
+          <h2 className='sign-in__card__logo__text'>Bookkeeper</h2>
+        </div>
         <h1 className='sign-in__card__title'>Sign In to Your Account</ h1>
         <form onSubmit={signIn} className='sign-in__card__form'>
           <div className='sign-in__card__form__box'>
@@ -54,7 +58,7 @@ export default function SignIn(): JSX.Element {
           <div className='sign-in__card__form__box'>
             <label className='sign-in__card__form__box__label'>Password</label>
             <input 
-              type="pasword" 
+              type="password" 
               placeholder='Enter your password'
               value={password}
               onChange={(e) => setPassword(e.target.value) }

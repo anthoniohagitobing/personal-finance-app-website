@@ -9,13 +9,28 @@
     @include card();
     width: 600px;
 
+    &__logo {
+      @include flexCenter(column);
+      margin-top: 2em;
+
+      &__picture {
+        width: 7em;
+        height: 7em;
+      }
+
+      &__text {
+        font-family: 'Playpen Sans', cursive;
+        font-size: 32px;
+      }
+    }
+  
     &__title {
       @include text(large, large);
       margin-top: 1em;
       margin-bottom: 0.3em;
       font-size: 32px;
     }
-  
+
     &__form {
       @include flexCenter(column);
       width: 75%;

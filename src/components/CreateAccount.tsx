@@ -15,8 +15,8 @@ export default function CreateAccount(): JSX.Element {
   }
   
   const [accountName, setAccountName] = useState<string>('');
-  const [currency, setCurrency] = useState<string>('General');
-  const [accountType, setAccountType] = useState<string>('USD'); 
+  const [currency, setCurrency] = useState<string>('USD');
+  const [accountType, setAccountType] = useState<string>('General'); 
   const [note, setNote] = useState<string | undefined>('');
 
   const navigate = useNavigate();
@@ -35,6 +35,8 @@ export default function CreateAccount(): JSX.Element {
       accountType: accountType,
       note: note,
     };
+    // console.log(newAccountData);
+
     const url: string = 'http://localhost:8080/account';
     // const url: string = 'https://personal-finance-app-server.onrender.com/account';
     await axios.post(url, newAccountData)
@@ -55,7 +57,7 @@ export default function CreateAccount(): JSX.Element {
     <div className='create-account'>
       <CheckAuth />
       <div className='create-account__nav-bar'>
-        <Link to="/Home" className='create-account__nav-bar__title'>Home</Link >
+        <Link to="/Home" className='create-account__nav-bar__title'>Bookkeeper</Link >
         <div className='create-account__nav-bar__button'>
           <Link to="/Home"><button className='create-account__nav-bar__button__home'>Go back to home</button></Link>
           <SignOut />

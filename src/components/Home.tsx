@@ -21,8 +21,8 @@ export default function Home() {
 
   // GET ALL ACCOUNTS
   async function getAllAccounts(): Promise<void> {
-    const url: string = `http://localhost:8080/account/${userId}`;
-    // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
+    const url: string = `http://localhost:8080/accounts/${userId}`;
+    // const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
     const retrievedData = await axios.get(url);
     // console.log(retrievedData);
     setAllAccounts(retrievedData.data);
@@ -55,7 +55,7 @@ export default function Home() {
     <div className='home'>
       <CheckAuth />
       <div className='home__nav-bar'>
-        <Link to='/Home' className='home__nav-bar__title'>Home</Link>
+        <Link to='/Home' className='home__nav-bar__title'>Bookkeeper</Link>
         <div className='home__nav-bar__button'>
           <SignOut />
         </div>

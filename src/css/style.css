@@ -23,6 +23,21 @@
   box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
   width: 600px;
 }
+.sign-in__card__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2em;
+}
+.sign-in__card__logo__picture {
+  width: 7em;
+  height: 7em;
+}
+.sign-in__card__logo__text {
+  font-family: "Playpen Sans", cursive;
+  font-size: 32px;
+}
 .sign-in__card__title {
   font-size: 28px;
   margin-top: 1em;
@@ -623,12 +638,50 @@
   margin: 20px;
   padding: 20px;
 }
-.show-records__card__title {
+.show-records__card__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.show-records__card__header__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  grid-area: 1/1/1/3;
+}
+.show-records__card__header__account-information {
+  grid-area: 1/1/1/1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.show-records__card__header__account-information__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.show-records__card__header__account-information__block__label {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   width: 100%;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+.show-records__card__header__account-information__block__value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
 }
 .show-records__card__summary {
   display: flex;

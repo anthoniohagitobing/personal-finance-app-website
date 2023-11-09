@@ -9,7 +9,7 @@ export default function SkipSignIn() {
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user: any) => {
-      console.log(user);
+      // console.log(user);
       if (user) navigate("/Home");
       }
     );
