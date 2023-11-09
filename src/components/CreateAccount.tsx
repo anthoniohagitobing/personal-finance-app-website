@@ -37,8 +37,8 @@ export default function CreateAccount(): JSX.Element {
     };
     // console.log(newAccountData);
 
-    const url: string = 'http://localhost:8080/account';
-    // const url: string = 'https://personal-finance-app-server.onrender.com/account';
+    // const url: string = 'http://localhost:8080/account';
+    const url: string = 'https://personal-finance-app-server.onrender.com/account';
     await axios.post(url, newAccountData)
       .then(res => {
         alert(res.data);

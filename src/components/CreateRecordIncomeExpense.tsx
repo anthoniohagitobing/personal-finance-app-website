@@ -48,8 +48,8 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
 
   // GET ALL ACCOUNT AND SELECT ACCOUNT
   async function getAllAccounts(): Promise<void> {
-    const url: string = `http://localhost:8080/accounts/${userId}`;
-    // const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
+    // const url: string = `http://localhost:8080/accounts/${userId}`;
+    const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
     const retrievedData = await axios.get(url);
     // console.log(retrievedData);
     setAllAccounts(retrievedData?.data);
@@ -83,8 +83,8 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
     }
     // console.log(newRecordIncomeExpense);
 
-    const url: string = 'http://localhost:8080/record-income-expense';
-    // const url: string = 'https://personal-finance-app-server.onrender.com/record-income-expense';
+    // const url: string = 'http://localhost:8080/record-income-expense';
+    const url: string = 'https://personal-finance-app-server.onrender.com/record-income-expense';
     await axios.post(url, newRecordIncomeExpense)
     .then(res => {
       alert(res.data);

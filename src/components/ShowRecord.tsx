@@ -59,15 +59,15 @@ export default function ShowRecord(): JSX.Element {
     if (!accountId) return;
 
     // RETRIEVE ACCOUNT DETAILS
-    const url1: string = `http://localhost:8080/account/${accountId}`;
-    // const url1: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
+    // const url1: string = `http://localhost:8080/account/${accountId}`;
+    const url1: string = `https://personal-finance-app-server.onrender.com/account/${accountId}`;
     const retrievedData1 = await axios.get(url1);
     setAccountInformation(retrievedData1.data);
     // console.log(retrievedData1.data);
 
     // RETRIEVE ALL RECORDS
-    const url2: string = `http://localhost:8080/all-records/${accountId}`;
-    // const url2: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
+    // const url2: string = `http://localhost:8080/all-records/${accountId}`;
+    const url2: string = `https://personal-finance-app-server.onrender.com/all-records/${accountId}`;
     const retrievedData2 = await axios.get(url2);
     // console.log(retrievedData2.data);
     setAllRecords(retrievedData2.data);

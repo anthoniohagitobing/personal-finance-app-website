@@ -19,8 +19,8 @@ export default function CheckAuth() {
       // console.log(user);
       if (user) {
         // Retrieve user data from backend database
-        const url: string = `http://localhost:8080/user/${user.email}`;
-        // const url: string = `https://personal-finance-app-server.onrender.com/user/${user.email}`;
+        // const url: string = `http://localhost:8080/user/${user.email}`;
+        const url: string = `https://personal-finance-app-server.onrender.com/user/${user.email}`;
         const userData = await axios.get(url);
         // console.log(userData);
 

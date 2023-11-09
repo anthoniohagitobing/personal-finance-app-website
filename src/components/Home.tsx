@@ -21,8 +21,8 @@ export default function Home() {
 
   // GET ALL ACCOUNTS
   async function getAllAccounts(): Promise<void> {
-    const url: string = `http://localhost:8080/accounts/${userId}`;
-    // const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
+    // const url: string = `http://localhost:8080/accounts/${userId}`;
+    const url: string = `https://personal-finance-app-server.onrender.com/accounts/${userId}`;
     const retrievedData = await axios.get(url);
     // console.log(retrievedData);
     setAllAccounts(retrievedData.data);

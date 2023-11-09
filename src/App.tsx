@@ -17,19 +17,6 @@ import './css/style.css';
 
 
 function App(): JSX.Element {
-  // const [test, setTest] = useState<string>("abc");
-  // async function testFunction() {
-  //   const fetchData = await axios.get("http://localhost:8080/");
-  //   setTest(fetchData.data);
-  //   console.log(fetchData);
-  // }
-  // useEffect(() => {
-  //   testFunction();
-  //   console.log(test);
-  // }, []);
-
-  
-
   const [userId, setUserId] = useState<number>(0);
   const [userEmail, setUserEmail] = useState<string>('testEmail');
   const [userFirstName, setUserFirstName] = useState<string>('testFirstName');
