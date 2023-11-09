@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import CheckAuth from './CheckAuth';
 import { MyContext } from '../MyContext';
 import axios from 'axios';
+import SignOut from './SignOut';
 
 export default function CreateRecordIncomeExpense(): JSX.Element {
   interface Account {
@@ -102,54 +103,83 @@ export default function CreateRecordIncomeExpense(): JSX.Element {
 
 
   return (
-    <>
+    <div className='create-record-income-expense'>
       <CheckAuth />
-      <Link to="/Home"><button>Go back to home</button></Link>
-      <form onSubmit={createRecordIncomeExpense}>
-        <h1>Input Record</h1>
-        <select onChange={(e) => setTransactionType(e.target.value)} required>
-          <option disabled> -- select an option -- </option>
-          <option>Income</option>
-          <option>Expense</option>
-        </select>
-        <select onChange={selectAccount} required>
-          <option disabled> -- select an option -- </option>
-          {allAccounts.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
-        </select>
-        <select onChange={(e) => setCategory(e.target.value)} required>
-          <option disabled> -- select an option -- </option>
-          {transactionType === 'Income' && categoryIncome.map((category) => <option key={category} value={category}>{category}</option>)}
-          {transactionType === 'Expense' && categoryExpense.map((category) => <option key={category} value={category}>{category}</option>)}
-        </select>
-        <input
-          type='text'
-          placeholder='Enter title'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        ></input>
-        <p>{transactionType === 'Income' ? '+' : '-'}</p>
-        <input
-          type='number'
-          placeholder='Enter amount'
-          value={amount}
-          onChange={(e) => setAmount(Number(e.target.value))}
-          required
-        ></input>
-        <DatePicker 
-          selected={dateTime}
-          onChange={dateTime => setDateTime(dateTime)}
-          placeholderText='Select a date'
-          dateFormat="MMMM d, yyyy h:mm aa"
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
-          timeCaption="Time"
-          required
-        />
-        <button type='submit'>Register Record</button>
-      </form>
-    </>
-
+      <div className='create-record-income-expense__nav-bar'>
+        <Link to="/Home" className='create-record-income-expense__nav-bar__title'>Home</Link >
+        <div className='create-record-income-expense__nav-bar__button'>
+          <Link to="/Home"><button className='create-record-income-expense__nav-bar__button__home'>Go back to home</button></Link>
+          <SignOut />
+        </div>
+      </div>
+      <div className='create-record-income-expense__card'>
+        <h1 className='create-record-income-expense__card__title'>Input Record</h1>
+        <form onSubmit={createRecordIncomeExpense} className='create-record-income-expense__card__form'>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Transaction Type:</label>
+            <select onChange={(e) => setTransactionType(e.target.value)} className='create-record-income-expense__card__form__box__select' required>
+              <option disabled> -- select an option -- </option>
+              <option>Income</option>
+              <option>Expense</option>
+            </select>
+          </div>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Account Name:</label>
+            <select onChange={selectAccount} className='create-record-income-expense__card__form__box__select' required>
+              <option disabled> -- select an option -- </option>
+              {allAccounts.map((account, index) => <option key={index} value={account.id}>{account.accountName}</option>)}
+            </select>
+          </div>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Category:</label>
+            <select onChange={(e) => setCategory(e.target.value)} className='create-record-income-expense__card__form__box__select' required>
+              <option disabled> -- select an option -- </option>
+              {transactionType === 'Income' && categoryIncome.map((category) => <option key={category} value={category}>{category}</option>)}
+              {transactionType === 'Expense' && categoryExpense.map((category) => <option key={category} value={category}>{category}</option>)}
+            </select>
+          </div>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Title:</label>
+            <input
+              type='text'
+              placeholder='Enter title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className='create-record-income-expense__card__form__box__input'
+              required
+            ></input>
+          </div>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Amount:</label>
+            <p className='create-record-income-expense__card__form__box__symbol'>{transactionType === 'Income' ? '+' : '-'}</p>
+            <input
+              type='number'
+              placeholder='Enter amount'
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
+              className='create-record-income-expense__card__form__box__input'
+              required
+            ></input>
+          </div>
+          <div className='create-record-income-expense__card__form__box'>
+            <label className='create-record-income-expense__card__form__box__label'>Date and Time:</label>
+            <DatePicker 
+              selected={dateTime}
+              onChange={dateTime => setDateTime(dateTime)}
+              placeholderText='Select a date'
+              dateFormat="MMMM d, yyyy h:mm aa"
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="Time"
+              showIcon
+              className='create-record-income-expense__card__form__box__date'
+              required
+            />
+          </div>
+          <button type='submit' className='create-record-income-expense__card__form__button'>Register Record</button>
+        </form>
+      </div>
+    </div>
   );
 }

@@ -24,7 +24,7 @@ export default function Home() {
     const url: string = `http://localhost:8080/account/${userId}`;
     // const url: string = `https://personal-finance-app-server.onrender.com/user/${userId}`;
     const retrievedData = await axios.get(url);
-    console.log(retrievedData);
+    // console.log(retrievedData);
     setAllAccounts(retrievedData.data);
   }
 
@@ -34,8 +34,11 @@ export default function Home() {
 
   // SELECT ACCOUNT
   function applySelectedAccount(e:any):void {
-    setSelectedAccount(e.target.dataset.accountid);
-    console.log(e.target.dataset.accountid);
+    const tempSelectedAccount = Number(e.target.dataset.accountid);
+    if (tempSelectedAccount) {
+      setSelectedAccount(tempSelectedAccount);
+      // console.log(tempSelectedAccount);
+    }
   }
 
   function autoSelectFirstAccount(): void {
@@ -49,26 +52,41 @@ export default function Home() {
 
 
   return (
-    <>
+    <div className='home'>
       <CheckAuth />
-      <SignOut />
-      <h1>home page</h1>
-      <Link to='/CreateAccount'><button>Create Account</button></Link>
-      <Link to='/CreateRecordIncomeExpense'><button>Create Record: Income/Expense</button></Link>
-      <Link to='/ShowRecord' state={{selectedAccount: selectedAccount}} ><button>Show Record</button></Link>
-      <div>
-        <h2>Account List</h2>
-        {allAccounts.map((account, index) => {
-          return (
-           <div key={index}>
-              <p data-accountid={account.id} onClick={applySelectedAccount}>{account.accountName}</p>
-              <p data-accountid={account.id} onClick={applySelectedAccount}>{account.currency}</p>
-              <p data-accountid={account.id} onClick={applySelectedAccount}>{account.accountType}</p>
-              <p data-accountid={account.id} onClick={applySelectedAccount}>{account.balance}</p>
-           </div> 
-          );
-        })}
+      <div className='home__nav-bar'>
+        <Link to='/Home' className='home__nav-bar__title'>Home</Link>
+        <div className='home__nav-bar__button'>
+          <SignOut />
+        </div>
       </div>
-    </>
+      <div className='home__account'>
+        <div className='home__account__header'>
+          <h2 className='home__account__header__title'>Account List</h2>
+          <Link to='/CreateAccount'><button className='home__account__header__button-1'>Create Account +</button></Link>
+          <Link to='/CreateRecordIncomeExpense'><button className='home__account__header__button-2'>Create Record: Income/Expense +</button></Link>
+          <Link to='/ShowRecord' state={{selectedAccount: selectedAccount}} ><button className='home__account__header__button-3'>Show Record</button></Link>
+        </div>
+        <div className='home__account__container'>
+          {allAccounts.map((account, index) => {
+            const cardClass = account.id === selectedAccount ? 'home__account__container__card home__account__container__card__selected' : 'home__account__container__card';
+            return (
+            <div key={index} className={cardClass} onClick={applySelectedAccount}>
+                <div className='home__account__container__card__row'>
+                  <p className='home__account__container__card__row__account-name' data-accountid={account.id}>{account.accountName}</p>
+                </div>
+                <div className='home__account__container__card__row'>
+                  <p className='home__account__container__card__row__account-type' data-accountid={account.id}>{account.accountType}</p>
+                  <div className='home__account__container__card__row__value'>
+                    <p className='home__account__container__card__row__value__currency' data-accountid={account.id}>{account.currency}</p>
+                    <p className='home__account__container__card__row__value__amount' data-accountid={account.id}>{account.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                  </div>
+                </div>
+            </div> 
+            );
+          })}
+        </div>
+      </div>
+    </div>
   )
 };

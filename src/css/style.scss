@@ -1,117 +1,19 @@
 @import './resets';
 @import './_variables';
+@import './mixins';
 
-@mixin flexCenter($direction) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
-}
+@import './sign-in';
+@import './sign-up';
+@import './sign-out';
+@import './home';
+@import './create-account';
+@import './create-record-income-expense';
+@import './show-record';
 
-@mixin button() {
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  background-color: $color-background-green;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    background-color: $color-button-hover;
-  }
-}
-
-@mixin text($font-size, $font-weight) {
-  font-size: map-get($map: $font-sizes, $key: $font-size);
-  font-weight: map-get($font-weights, $font-weight);
-}
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: $color-background-green;
+  // background-color: red;
 }
 
-.sign-in {
-  @include flexCenter(column);
-  height: 100vh;
-  width: 100vw;
 
-  &__container {
-    @include flexCenter(column);
-    // justify-content: space-between;
-    background-color: $color-background-light-grey;
-    width: 600px;
-    // padding-top: 50px;
-    // padding-bottom: 50px;
-    border-radius: 5%;
-  }
-
-  &__title {
-    @include text(large, large);
-    margin: 1em;
-    font-size: 32px;
-  }
-
-  &__form {
-    @include flexCenter(column);
-    // height: 50%;
-    width: 75%;
-    // justify-content: space-around;
-    
-    &__box {
-      justify-content: left;
-      @include flexCenter(column);
-      text-align: left; 
-      // align-items: ;
-      width: 100%;
-      text-align: left;
-
-      &__label {
-        width: 100%;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        
-        @include text(regular, regular);
-        // font-size: 30px;
-        // color:red;
-      }
-
-      &__input {
-        padding: 1em;
-        // margin-top: 0.5em;
-        // margin-bottom: 0.5em;
-        @include text(medium, regular );
-        height: 100%;
-        width: 100%;
-        box-sizing: border-box;
-        // text-align: left;
-      }
-    }
-
-    &__sign-in-button {
-      @include button();
-      font-size: 20px;
-      margin-top: 2em;
-      width: 100%;
-
-    }
-  }
-
-  &__sign-up {
-    @include flexCenter(column);
-    margin: 1em;
-
-    &__link {
-      width: 100%;
-      color: blue;
-      font-weight: bold;
-      margin-top: 0.3em;
-      margin-bottom: 0.8em;
-
-      &:hover {
-        color: #7e9ae6;
-      }
-    }
-  }
-  
-
-}
