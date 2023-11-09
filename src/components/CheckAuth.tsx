@@ -9,9 +9,9 @@ export default function CheckAuth() {
   const navigate = useNavigate();
   const { userId, userEmail, userFirstName, userLastName, setUserId, setUserEmail, setUserFirstName, setUserLastName } = useContext(MyContext);
 
-  function checkCurrentUser() {
-    console.log(userId, userEmail, userFirstName, userLastName);
-  }
+  // function checkCurrentUser() {
+  //   console.log(userId, userEmail, userFirstName, userLastName);
+  // }
 
   useEffect(() => {
     // Check if user is log-ed in. If not, return to sign in. If yes, assign context variable
