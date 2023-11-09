@@ -1,0 +1,19 @@
+@import './resets';
+@import './_variables';
+@import './mixins';
+
+@import './sign-in';
+@import './sign-up';
+@import './sign-out';
+@import './home';
+@import './create-account';
+@import './create-record-income-expense';
+@import './show-record';
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  // background-color: red;
+}
+
+

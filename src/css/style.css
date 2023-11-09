@@ -1,0 +1,775 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sign-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4bbb7d;
+}
+.sign-in__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  width: 600px;
+}
+.sign-in__card__title {
+  font-size: 28px;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  font-size: 32px;
+}
+.sign-in__card__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 75%;
+}
+.sign-in__card__form__box {
+  justify-content: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  text-align: left;
+}
+.sign-in__card__form__box__label {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 14px;
+  font-weight: 400;
+}
+.sign-in__card__form__box__input {
+  padding: 1em;
+  font-size: 18px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sign-in__card__form__box__sign-in-button {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  margin-top: 2em;
+  width: 100%;
+}
+.sign-in__card__form__box__sign-in-button:hover {
+  background-color: #003256;
+}
+.sign-in__card__sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1em;
+}
+.sign-in__card__sign-up__link {
+  width: 100%;
+  color: blue;
+  font-weight: bold;
+  margin-top: 0.3em;
+  margin-bottom: 0.8em;
+}
+.sign-in__card__sign-up__link:hover {
+  color: #7e9ae6;
+}
+
+.sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4bbb7d;
+}
+.sign-up__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  width: 600px;
+}
+.sign-up__card__title {
+  font-size: 28px;
+  margin-top: 1em;
+  margin-bottom: 0em;
+  font-size: 32px;
+}
+.sign-up__card__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 75%;
+}
+.sign-up__card__form__box {
+  justify-content: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.sign-up__card__form__box__label {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 14px;
+  font-weight: 400;
+}
+.sign-up__card__form__box__input {
+  padding: 1em;
+  font-size: 18px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sign-up__card__form__box__sign-up-button {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  margin-top: 1.5em;
+  width: 100%;
+}
+.sign-up__card__form__box__sign-up-button:hover {
+  background-color: #003256;
+}
+.sign-up__card__sign-in-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  color: blue;
+  font-weight: bold;
+  margin-top: 0.7em;
+  margin-bottom: 0.8em;
+}
+.sign-up__card__sign-in-link:hover {
+  color: #7e9ae6;
+}
+
+.sign-out__button {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #fd424b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.sign-out__button:hover {
+  background-color: #b02e34;
+}
+
+.home {
+  background-color: #f2f2f2;
+  height: 100vh;
+}
+.home__nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4bbb7d;
+  width: 100%;
+  height: 80px;
+}
+.home__nav-bar__title {
+  margin-left: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+.home__nav-bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1em;
+  gap: 20px;
+}
+.home__account {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+.home__account__header {
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 1em;
+}
+.home__account__header__title {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+.home__account__header__button-1 {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #36875a;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.home__account__header__button-1:hover {
+  background-color: #215438;
+}
+.home__account__header__button-2 {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.home__account__header__button-2:hover {
+  background-color: #003256;
+}
+.home__account__header__button-3 {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #ffbb00;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.home__account__header__button-3:hover {
+  background-color: #cc9500;
+}
+.home__account__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  padding: 1em;
+  padding-bottom: 2em;
+}
+.home__account__container__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25%;
+  padding: 10px;
+  border: solid black 2px;
+}
+.home__account__container__card:hover {
+  background-color: #4bbb7d;
+}
+.home__account__container__card__selected {
+  background-color: #4bbb7d;
+}
+.home__account__container__card__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.home__account__container__card__row__account-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.home__account__container__card__row__account-type {
+  font-size: 18px;
+  font-style: italic;
+}
+.home__account__container__card__row__value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.home__account__container__card__row__value__currency {
+  font-size: 18px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.home__account__container__card__row__value__amount {
+  font-size: 18px;
+  align-self: flex-end;
+}
+
+.create-account {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+.create-account__nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4bbb7d;
+  width: 100%;
+  height: 80px;
+}
+.create-account__nav-bar__title {
+  margin-left: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+.create-account__nav-bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1em;
+  gap: 20px;
+}
+.create-account__nav-bar__button__home {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.create-account__nav-bar__button__home:hover {
+  background-color: #003256;
+}
+.create-account__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  width: 600px;
+}
+.create-account__card__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5em;
+}
+.create-account__card__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.create-account__card__form__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  justify-content: left;
+  width: 100%;
+}
+.create-account__card__form__box__label {
+  font-size: 14px;
+  font-weight: bold;
+  width: 115px;
+  text-align: right;
+  margin-right: 10px;
+}
+.create-account__card__form__box__input {
+  padding: 0.5em;
+  width: 70%;
+}
+.create-account__card__form__box__select {
+  padding: 0.5em;
+  width: 30%;
+}
+.create-account__card__form__button {
+  margin: 1.5em;
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.create-account__card__form__button:hover {
+  background-color: #003256;
+}
+
+.create-record-income-expense {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+}
+.create-record-income-expense__nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4bbb7d;
+  width: 100%;
+  height: 80px;
+}
+.create-record-income-expense__nav-bar__title {
+  margin-left: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+.create-record-income-expense__nav-bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1em;
+  gap: 20px;
+}
+.create-record-income-expense__nav-bar__button__home {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.create-record-income-expense__nav-bar__button__home:hover {
+  background-color: #003256;
+}
+.create-record-income-expense__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  width: 600px;
+}
+.create-record-income-expense__card__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5em;
+}
+.create-record-income-expense__card__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.create-record-income-expense__card__form__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  justify-content: left;
+  width: 100%;
+}
+.create-record-income-expense__card__form__box__label {
+  font-size: 14px;
+  font-weight: bold;
+  width: 20%;
+  text-align: right;
+  margin-right: 10px;
+}
+.create-record-income-expense__card__form__box__input {
+  padding: 0.5em;
+  width: 80%;
+}
+.create-record-income-expense__card__form__box__select {
+  padding: 0.5em;
+  width: 50%;
+}
+.create-record-income-expense__card__form__box__symbol {
+  font-weight: bold;
+  margin-right: 3px;
+}
+.create-record-income-expense__card__form__box__date {
+  padding: 0.5em;
+}
+.create-record-income-expense__card__form__button {
+  margin: 1.5em;
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #00639b;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+.create-record-income-expense__card__form__button:hover {
+  background-color: #003256;
+}
+
+.show-records {
+  background-color: #f2f2f2;
+  height: 100vh;
+}
+.show-records__nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4bbb7d;
+  width: 100%;
+  height: 80px;
+}
+.show-records__nav-bar__title {
+  margin-left: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+.show-records__nav-bar__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1em;
+  gap: 20px;
+}
+.show-records__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+}
+.show-records__card__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.show-records__card__summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.show-records__card__summary__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: solid black 2px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+.show-records__card__summary__block__data.positive {
+  color: green;
+}
+.show-records__card__summary__block__data.negative {
+  color: red;
+}
+.show-records__card__filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  justify-content: space-evenly;
+}
+.show-records__card__filter__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-start;
+  align-self: start;
+}
+.show-records__card__filter__column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+.show-records__card__filter__column__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.show-records__card__filter__column__block__label {
+  width: 100%;
+  text-align: right;
+}
+.show-records__card__filter__column__block__input {
+  padding: 0.2em;
+}
+.show-records__card__filter__column__block__select {
+  padding: 0.2em;
+}
+.show-records__card__filter__column__block__date {
+  padding: 0.2em;
+}
+.show-records__card__filter__column__block__button {
+  border: solid black 1px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  font-weight: bold;
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  padding: 6px;
+}
+.show-records__card__filter__column__block__button:hover {
+  background-color: #cecece;
+}
+.show-records__card__history {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1.5em 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20px;
+  border: solid rgb(212, 212, 212) 1px;
+  overflow-y: auto;
+  height: 58vh;
+}
+.show-records__card__history__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.show-records__card__history__heading > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(243, 243, 243);
+  border-bottom: solid rgb(212, 212, 212) 1px;
+  width: 25%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px;
+}
+.show-records__card__history__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.show-records__card__history__row > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: solid rgb(212, 212, 212) 1px;
+  width: 25%;
+  padding: 7px;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}/*# sourceMappingURL=style.css.map */

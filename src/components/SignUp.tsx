@@ -53,42 +53,58 @@ export default function SignUp(): JSX.Element {
   }
 
   return (
-    <>
-      <div>
-        <form onSubmit={signUp}>
-          <h1>Create Account</h1>
-          <input 
-            type="email" 
-            placeholder='Enter your email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value) }
-            required
-          ></input>
-          <input 
-            type="pasword" 
-            placeholder='Enter your password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value) }
-            required
-          ></input>
-          <input 
-            type="text" 
-            placeholder='Enter your first name'
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value) }
-            required
-          ></input>
-          <input 
-            type="text" 
-            placeholder='Enter your last name'
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value) }
-            required
-          ></input>
-          <button type="submit">Sign up</button>
-        </form>
-        <Link to="/"><button>Go to Sign In</button></Link>
+      <div className='sign-up'>
+        <div className='sign-up__card'>
+          <h1 className='sign-up__card__title'>Create Account</h1>
+          <form onSubmit={signUp} className='sign-up__card__form'>
+            <div className='sign-up__card__form__box'>
+              <label className='sign-up__card__form__box__label'>Email</label>
+              <input 
+                type="email" 
+                placeholder='Enter your email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value) }
+                className='sign-up__card__form__box__input'
+                required
+              ></input>
+            </div>
+            <div className='sign-up__card__form__box'>
+              <label className='sign-up__card__form__box__label'>Password</label>
+              <input 
+                type="pasword" 
+                placeholder='Enter your password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value) }
+                className='sign-up__card__form__box__input'
+                required
+              ></input>
+            </div>
+            <div className='sign-up__card__form__box'>
+              <label className='sign-up__card__form__box__label'>First Name</label>
+              <input 
+                type="text" 
+                placeholder='Enter your first name'
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value) }
+                className='sign-up__card__form__box__input'
+                required
+              ></input>
+            </div>
+            <div className='sign-up__card__form__box'>
+              <label className='sign-up__card__form__box__label'>Last Name</label>
+              <input 
+                type="text" 
+                placeholder='Enter your last name'
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value) }
+                className='sign-up__card__form__box__input'
+                required
+              ></input>
+            </div>
+            <button type="submit" className='sign-up__card__form__box__sign-up-button'>Sign up</button>
+          </form>
+          <Link to="/" className='sign-up__card__sign-in-link'><p>Go Back to Sign In</p></Link>
+        </div>
       </div>
-    </>
   )
 }

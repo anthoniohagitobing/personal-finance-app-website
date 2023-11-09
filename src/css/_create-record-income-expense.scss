@@ -1,0 +1,81 @@
+.create-record-income-expense {
+  background-color: $color-background-medium-grey;
+  @include flexCenter(column);
+  justify-content: flex-start;
+  // background-color: red;
+  height: 100vh;
+
+  &__nav-bar {
+    @include nav-bar();
+
+    &__button {
+      &__home {
+        @include button($color-button-blue);
+      }
+    }
+  }
+
+  &__card {
+    @include card();
+    @include flexCenter(column);
+    margin: 20px;
+    width: 600px;
+
+    &__title {
+      @include flexCenter(row);
+      width: 100%;
+      padding: 0.5em;
+    }
+
+    &__form {
+      @include flexCenter(column);
+      width: 100%;
+
+      // background-color: red;
+
+      &__box {
+        @include flexCenter(row);
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        justify-content: left;
+        width: 100%;
+        // gap: 20px;
+
+        &__label {
+          font-size: 14px;
+          font-weight: bold;
+          width: 20%;
+          text-align: right;
+          margin-right: 10px;
+        }
+
+        &__input {
+          padding: 0.5em;
+          width: 80%;
+        }
+
+        &__select {
+          padding: 0.5em;
+          width: 50%;
+        }
+
+        &__symbol {
+          font-weight: bold;
+          margin-right: 3px;
+          // width: 5%;
+        }
+
+        &__date {
+          padding: 0.5em;
+        }
+      }
+
+      &__button {
+        margin: 1.5em;
+        @include button($color-button-blue);
+      }
+    }
+  }
+}

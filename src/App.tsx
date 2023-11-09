@@ -13,7 +13,7 @@ import ShowRecord from './components/ShowRecord';
 import { MyContext } from './MyContext';
 
 // IMPORT OTHERS
-import './App.css';
+import './css/style.css';
 
 
 function App(): JSX.Element {

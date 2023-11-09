@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CheckAuth from './CheckAuth';
 import { MyContext } from '../MyContext';
 import axios from 'axios';
+import SignOut from './SignOut';
 
 export default function CreateAccount(): JSX.Element {
   interface NewAccountData {
@@ -51,34 +52,56 @@ export default function CreateAccount(): JSX.Element {
   // }, [accountType]);
 
   return (
-    <div>
+    <div className='create-account'>
       <CheckAuth />
-      <Link to="/Home"><button>Go back to home</button></Link>
-      <form onSubmit={createAccount}>
-        <h1>Create Account</h1>
-        <input
-          type='text'
-          placeholder='Enter your account name'
-          value={accountName}
-          onChange={(e) => setAccountName(e.target.value)}
-          required
-        ></input>
-        <select onChange={(e) => setCurrency(e.target.value)} required>
-          <option disabled> -- select an option -- </option>
-          {currencyOption.map((currency) => <option key={currency} value={currency}>{currency}</option>)}
-        </select>
-        <select onChange={(e) => setAccountType(e.target.value)} required>
-          <option disabled> -- select an option -- </option>
-          {accountTypeOption.map((type) => <option key={type} value={type}>{type}</option>)}
-        </select>
-        <input
-          type='text'
-          placeholder='Enter your note'
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        ></input>
-        <button type='submit'>Create Account</button>
-      </form>
+      <div className='create-account__nav-bar'>
+        <Link to="/Home" className='create-account__nav-bar__title'>Home</Link >
+        <div className='create-account__nav-bar__button'>
+          <Link to="/Home"><button className='create-account__nav-bar__button__home'>Go back to home</button></Link>
+          <SignOut />
+        </div>
+      </div>
+      <div className='create-account__card'>
+        <h1 className='create-account__card__title'>Create Account</h1>
+        <form onSubmit={createAccount} className='create-account__card__form'>
+          <div className='create-account__card__form__box'>
+            <label className='create-account__card__form__box__label'>Account Name:</label>
+            <input
+              type='text'
+              placeholder='Enter your account name'
+              value={accountName}
+              onChange={(e) => setAccountName(e.target.value)}
+              required
+              className='create-account__card__form__box__input'
+            ></input>
+          </div>
+          <div className='create-account__card__form__box'>
+            <label className='create-account__card__form__box__label'>Currency:</label>
+            <select onChange={(e) => setCurrency(e.target.value)} className='create-account__card__form__box__select' required>
+              <option disabled> -- select an option -- </option>
+              {currencyOption.map((currency) => <option key={currency} value={currency}>{currency}</option>)}
+            </select>
+          </div>
+          <div className='create-account__card__form__box'>
+            <label className='create-account__card__form__box__label'>Account Type:</label>
+            <select onChange={(e) => setAccountType(e.target.value)} className='create-account__card__form__box__select' required>
+              <option disabled> -- select an option -- </option>
+              {accountTypeOption.map((type) => <option key={type} value={type}>{type}</option>)}
+            </select>
+          </div>
+          <div className='create-account__card__form__box'>
+            <label className='create-account__card__form__box__label'>Note:</label>
+            <input
+              type='text'
+              placeholder='Enter your note'
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              className='create-account__card__form__box__input'
+            ></input>
+          </div>
+          <button type='submit' className='create-account__card__form__button'>Create Account</button>
+        </form>
+      </div>
     </div>
   )
 }

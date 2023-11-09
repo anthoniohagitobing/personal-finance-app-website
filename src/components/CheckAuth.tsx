@@ -44,7 +44,7 @@ export default function CheckAuth() {
 
   return (
     <>
-      <button onClick={checkCurrentUser}>Check Current User</button>
+      {/* <button onClick={checkCurrentUser}>Check Current User</button> */}
     </>
   )
 }
