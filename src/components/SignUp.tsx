@@ -37,6 +37,8 @@ export default function SignUp(): JSX.Element {
           firstName: firstName,
           lastName: lastName
         };
+        console.log(newUserData);
+
         // const url: string = 'http://localhost:8080/user';
         const url: string = 'https://personal-finance-app-server.onrender.com/user';
         await axios.post(url, newUserData)
